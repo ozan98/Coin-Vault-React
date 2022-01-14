@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState, useEffect} from 'react'
+import Header from './components/Header'
+import Coin from './components/Coin'
+
+import axios from 'axios'
+const apiUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&order=market_cap_desc&per_page=100&page=1&sparkline=false';
 
 function App() {
+  const [coin, setCoin] = useState([])
+
+  useEffect(() => {
+    axios.get(apiUrl).then(res => {
+      console.log('data retrieved succesfully')
+      setCoin(res.data)
+      console.log(res.data)
+    }).catch(error => {
+      console.log('data retrieved unsuccesfully')
+      console.log(error)
+    })
+  },[])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header/>
+      {coin.map(coin =>{
+        return (
+          <Coin key={coin.id} coinName={coin.id}
+                coinPrice={coin.current_price}></Coin>
+        )
+      })}
     </div>
   );
 }
