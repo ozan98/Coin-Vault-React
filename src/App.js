@@ -31,9 +31,6 @@ function App() {
     return coin.name.toLowerCase().includes(searchQuery.toLowerCase())
   })
 
-  console.log(filteredSearch)
-
-
 
   return (
     <div className="app">
