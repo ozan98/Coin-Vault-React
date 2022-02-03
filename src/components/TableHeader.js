@@ -3,14 +3,14 @@ import React from 'react';
 const TableHeader = () => {
 
     return (
-        <div className="table-header-container">
-            <p>Coin</p>
-            <p>Symbol</p>
-            <p>Price</p>
-            <p>Volume</p>
-            <p>24h Price Change</p>
-            <p>Market Cap</p>
-        </div>
+        <tr>
+            <th><p>Coin</p></th>
+            <th><p>Symbol</p></th>
+            <th><p>Price</p></th>
+            <th><p>Volume</p></th>
+            <th><p>24h Price Change</p></th>
+            <th><p>Market Cap</p></th>
+        </tr>
     )
 }
 

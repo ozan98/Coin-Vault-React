@@ -13,17 +13,8 @@
     height: 25px;
 }
 
-.table-header-container {
+.table-container {
     display: flex;
-    /* styling on the main axis */
-    justify-content: space-between;
-    margin-right: 200px;
-    margin-left: 200px;
-    margin-top: 60px;
-    
-}
-
-.header {
-    align-content: center;
+    align-items: center;
 }
 

@@ -1,8 +1,12 @@
 import React,{useState, useEffect} from 'react'
-import Header from './components/Header'
-import Coin from './components/Coin'
-import TableHeader from './components/TableHeader'
-import './styleSheet/App.css'
+
+//compenent imports
+import Header from './Header'
+import Coin from './Coin'
+import TableHeader from './TableHeader'
+
+//stylesheet imports
+import '../styleSheet/App.css'
 
 import axios from 'axios'
 const apiUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&order=market_cap_desc&per_page=100&page=1&sparkline=false';
@@ -31,6 +35,21 @@ function App() {
     return coin.name.toLowerCase().includes(searchQuery.toLowerCase())
   })
 
+  const getCoinList = () => {
+    return filteredSearch.map((coin) => {
+      return (
+        <Coin key={coin.id} 
+              coinName={coin.id}
+              coinPrice={coin.current_price}
+              coinImage={coin.image}
+              coinVolume={coin.total_volume}
+              coinSymbol={coin.symbol}
+              coinPriceChange24={coin.price_change_percentage_24h}
+              coinMarketCap={coin.market_cap}/>
+      )
+    })
+  }
+
 
   return (
     <div className="app">
@@ -44,18 +63,18 @@ function App() {
         </form>
 
       </div>
-      <TableHeader/>
-      {filteredSearch.map(coin =>{
-        return (
-          <Coin key={coin.id} coinName={coin.id}
-                coinPrice={coin.current_price}
-                coinImage={coin.image}
-                coinVolume={coin.total_volume}
-                coinSymbol={coin.symbol}
-                coinPriceChange24={coin.price_change_percentage_24h}
-                coinMarketCap={coin.market_cap}/>
-        )
-      })}
+      <div className="table-container">
+        <table>
+          <thead>
+            <TableHeader/>
+          </thead>
+          <tbody>
+            {getCoinList()}
+          </tbody>
+        </table>
+      </div>
+      
+  
     </div>
   );
 }
