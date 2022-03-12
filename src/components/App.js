@@ -54,6 +54,7 @@ function App() {
   return (
     <div className="app">
       <Header/>
+
       <div className="search-container">
         <form>
           <label>Search Crypto Currency</label>
@@ -63,15 +64,18 @@ function App() {
         </form>
 
       </div>
+
       <div className="table-container">
-        <table>
-          <thead>
-            <TableHeader/>
-          </thead>
-          <tbody>
-            {getCoinList()}
-          </tbody>
-        </table>
+        <div className="table">
+          <table>
+            <thead>
+              <TableHeader/>
+            </thead>
+            <tbody>
+              {getCoinList()}
+            </tbody>
+          </table>
+        </div>
       </div>
       
   

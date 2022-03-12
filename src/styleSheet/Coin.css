@@ -5,3 +5,16 @@
 .coin-green {
     color: green;
 }
+
+.coin-name {
+    display: flex;
+}
+
+tr {
+    border-bottom: 1px solid white;
+}
+
+td {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
